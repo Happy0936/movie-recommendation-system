@@ -154,7 +154,7 @@ except FileNotFoundError:
 # ----------------- FUNCTIONS -----------------
 def fetch_poster(movie_id):
     poster_url = "https://via.placeholder.com/500x750?text=No+Poster"
-    API_KEY = "3ba3dc8532c0d5c44713853736ef5a24"
+    API_KEY = st.secrets["TMDB_API_KEY"]
     try:
         url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={API_KEY}&language=en-US"
         data = requests.get(url).json()
