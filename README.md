@@ -50,21 +50,17 @@ The project uses the TMDB Movie Metadata Dataset containing movie information su
 * Keywords
 * Overview
 
-### Data Preprocessing
+### Data Collection & Backend Processing
 
-The following preprocessing steps were performed:
+The backend logic processes data from the TMDB Movie Metadata Dataset, covering the following stages:
 
-1. Merged movies and credits datasets
-2. Removed missing values
-3. Extracted:
+**Data Preprocessing**: Merged movies and credits datasets, removed missing values, extracted key features (Genres, Keywords, Top Cast Members, Director), combined all features into a single tags column, converted text into lowercase, and applied stemming using NLTK.
 
-   * Genres
-   * Keywords
-   * Top Cast Members
-   * Director
-4. Combined all features into a single tags column
-5. Converted text into lowercase
-6. Applied stemming using NLTK
+**Feature Engineering & Vectorization**: Combined text features (Overview, Genres, Keywords, Cast, Director) into a unified tags column and utilized CountVectorizer to transform textual data into numerical vectors.
+
+**Similarity Calculation**: Applied Cosine Similarity to compute similarity scores between movies to generate accurate recommendations.
+
+**Model Serialization**: Serialized trained data models and mappings into binary files (movie_list.pkl, similarity.pkl) using Python's pickle library.
 
 ### Feature Engineering
 
