@@ -1,192 +1,185 @@
 # Movie Recommendation System
 
-A Content-Based Movie Recommendation System built using Python, Pandas, Scikit-Learn, and Streamlit. The system recommends movies similar to a selected movie by analyzing genres, cast, crew, keywords, and movie overviews using Cosine Similarity.
+A **Content-Based Movie Recommendation System** built using **Python, Pandas, Scikit-Learn, and Streamlit**.
+
+The system recommends movies similar to a selected movie by analyzing **genres, cast, crew, keywords, and movie overviews** using **CountVectorizer and Cosine Similarity**.
+
+---
+
+##  Live Demo
+
+🔹 **Streamlit Web App**  
+👉 https://movie-recommender-happy.streamlit.app/
+
 
 ---
 
 ## Features
 
-* Recommend Top 5 similar movies
-* Content-Based Filtering
-* Cosine Similarity based recommendations
-* Interactive Streamlit Web Application
-* User-friendly movie selection interface
-* Fast recommendation generation
+-  **Top 5 Recommendations**  
+  Get the top 5 movies similar to the selected movie.
+
+-  **Content-Based Filtering**  
+  Recommendations are generated based on movie content and features.
+
+-  **Cosine Similarity**  
+  Calculates similarity between movies using their feature vectors.
+
+-  **Interactive Movie Search**  
+  Select a movie easily using the Streamlit interface.
+
+-  **Movie Poster Integration**  
+  Fetches movie posters dynamically using the TMDB API.
+
+-  **OTT Availability Search**  
+  Provides a direct search option to find where the selected movie is available for streaming.
+
+-  **Secure API Configuration**  
+  TMDB API credentials are stored securely using Streamlit Secrets.
+
+-  **Fast Recommendations**  
+  Pre-computed similarity data allows recommendations to be generated quickly.
 
 ---
 
-## Tech Stack
+##  Tech Stack
 
 ### Programming Language
 
-* Python
+- Python
 
-### Libraries Used
+### Libraries & Frameworks
 
-* Pandas
-* NumPy
-* Scikit-Learn
-* NLTK
-* Streamlit
-* Pickle
+- **Pandas** – Data manipulation and preprocessing
+- **NumPy** – Numerical computation
+- **Scikit-Learn** – CountVectorizer and Cosine Similarity
+- **NLTK** – Text preprocessing and stemming
+- **Streamlit** – Interactive web application
+- **Requests** – TMDB API requests
+- **Pickle** – Model and data serialization
 
-### Dataset
+### APIs
 
-* TMDB 5000 Movies Dataset
-* TMDB 5000 Credits Dataset
+- **TMDB API** – Movie posters and movie metadata
 
----
+### Tools
 
-## Project Workflow
-
-### Data Collection
-
-The project uses the TMDB Movie Metadata Dataset containing movie information such as:
-
-* Movie Title
-* Genres
-* Cast
-* Crew
-* Keywords
-* Overview
-
-### Data Collection & Backend Processing
-
-The backend logic processes data from the TMDB Movie Metadata Dataset, covering the following stages:
-
-**Data Preprocessing**: Merged movies and credits datasets, removed missing values, extracted key features (Genres, Keywords, Top Cast Members, Director), combined all features into a single tags column, converted text into lowercase, and applied stemming using NLTK.
-
-**Feature Engineering & Vectorization**: Combined text features (Overview, Genres, Keywords, Cast, Director) into a unified tags column and utilized CountVectorizer to transform textual data into numerical vectors.
-
-**Similarity Calculation**: Applied Cosine Similarity to compute similarity scores between movies to generate accurate recommendations.
-
-**Model Serialization**: Serialized trained data models and mappings into binary files (movie_list.pkl, similarity.pkl) using Python's pickle library.
-
-### Feature Engineering
-
-A tags column was created by combining:
-
-* Overview
-* Genres
-* Keywords
-* Cast
-* Director
-
-### Vectorization
-
-CountVectorizer was used to convert text data into numerical vectors.
-
-### Similarity Calculation
-
-Cosine Similarity was used to measure similarity between movies and generate recommendations.
+- Git
+- GitHub
+- Streamlit Community Cloud
+- Jupyter Notebook
 
 ---
 
-## Recommendation Process
+##  Dataset
 
-1. User selects a movie.
-2. System finds the movie index.
-3. Cosine similarity scores are calculated.
-4. Top 5 most similar movies are identified.
-5. Recommendations are displayed to the user.
+This project uses the **TMDB 5000 Movie Dataset**, consisting of:
+
+- **TMDB 5000 Movies Dataset**
+- **TMDB 5000 Credits Dataset**
+
+### Movie Information Used
+
+The dataset contains information such as:
+
+- Movie Title
+- Movie Overview
+- Genres
+- Keywords
+- Cast
+- Crew
+- Director
+- Movie ID
 
 ---
 
-## Project Structure
+#  Project Workflow
 
+## 1. Data Collection
+
+The project uses the TMDB 5000 Movies and Credits datasets containing detailed movie information.
+
+The important features used for recommendation include:
+
+- Movie Title
+- Overview
+- Genres
+- Keywords
+- Cast
+- Director
+
+---
+
+## 2. Data Preprocessing
+
+The movies and credits datasets are merged using the movie ID.
+
+The following preprocessing steps are performed:
+
+- Merge movies and credits datasets
+- Remove unnecessary columns
+- Handle missing values
+- Extract genres
+- Extract keywords
+- Extract top cast members
+- Extract director
+- Convert text into lowercase
+- Apply stemming using NLTK
+
+---
+
+## 3. Feature Engineering
+
+Different movie features are combined into a single **`tags`** column.
+
+The tags contain:
+
+- Overview
+- Genres
+- Keywords
+- Cast
+- Director
+
+This allows the recommendation system to compare movies based on their overall content.
+
+---
+
+## 4. Text Vectorization
+
+The combined `tags` column is converted into numerical vectors using **CountVectorizer** from Scikit-Learn.
+
+This transforms the textual movie information into a mathematical representation that can be compared.
+
+---
+
+## 5. Similarity Calculation
+
+**Cosine Similarity** is used to calculate the similarity between movie vectors.
+
+Movies with higher similarity scores are considered more closely related.
+
+The resulting similarity matrix is stored in:
+
+```text
+similarity.pkl
+```
+---
+## **Project Structure**
+```text
 movie-recommendation-system/
-
-├── app.py
-
-├── movie_list.pkl
-
-├── similarity.pkl
-
-├── requirements.txt
-
-├── README.md
-
+│
 ├── MoviesData/
-
 │   ├── tmdb_5000_movies.csv
-
 │   └── tmdb_5000_credits.csv
-
-└── Home/
-
+│
+├── app.py
+├── main.py
+├── movie recommendation.ipynb
+├── movie_list.pkl
+├── similarity.pkl
+├── requirements.txt
+├── .gitignore
+├── .gitattributes
+└── README.md
 ```
-└── background.jpg
-```
 
----
-
-## Run Locally
-
-### Clone Repository
-
-git clone <repository-url>
-
-### Move into Project Directory
-
-cd movie-recommendation-system
-
-### Install Dependencies
-
-pip install -r requirements.txt
-
-### Run Streamlit App
-
-streamlit run app.py
-
----
-
-## Sample Recommendation
-
-Input Movie:
-
-Avengers: Age of Ultron
-
-Recommended Movies:
-
-* Iron Man
-* Iron Man 3
-* The Avengers
-* Captain America: Civil War
-* Iron Man 2
-
----
-
-## Learning Outcomes
-
-Through this project, I learned:
-
-* Data Preprocessing
-* Feature Engineering
-* Natural Language Processing Basics
-* CountVectorizer
-* Cosine Similarity
-* Model Serialization using Pickle
-* Streamlit Web App Development
-* Git & GitHub
-* Project Deployment
-
----
-
-## Future Improvements
-
-* Movie Posters Integration using TMDB API
-* Movie Ratings Display
-* Genre-based Filtering
-* Search Suggestions
-* Netflix-style User Interface
-* Cloud Deployment
-
----
-
-## Author
-
-Happy
-
-M.Tech Student
-
-Machine Learning & Data Science Enthusiast
