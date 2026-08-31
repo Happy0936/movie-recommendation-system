@@ -7,7 +7,7 @@ It recommends the **Top 5 similar movies** based on movie content using **CountV
 
 ## Live Demo
 
-👉 **Streamlit App:** YOUR_STREAMLIT_URL
+👉 **Streamlit App:** https://movie-recommender-happy.streamlit.app/
 
 ---
 
