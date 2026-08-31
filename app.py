@@ -201,8 +201,13 @@ if "trigger_recommendation" not in st.session_state:
 # Yahan nav bar me bhi wapas Movie Recommendation update kiya hai
 st.markdown("""
 <div class="top-nav">
-    <div class="brand-logo"><span style="color:#6366f1;">🎬</span> Movie Recommendation</div>
-    <div class="status-badge"><span class="status-dot"></span> API Disconnected</div>
+    <div class="brand-logo">
+        <span style="color:#6366f1;">🎬</span> Movie Recommendation
+    </div>
+    <div class="status-badge">
+        <span class="status-dot" style="background-color:#22c55e;"></span>
+        API Connected
+    </div>
 </div>
 """, unsafe_allow_html=True)
 
